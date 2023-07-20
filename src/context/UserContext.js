@@ -6,6 +6,7 @@ export const userContext = createContext({})
 
 const UserContext = ({ children }) => {
     const [users, setUsers] = useState([])
+    const [activeUser, setActiveUser] = useState([])
     useEffect(() => {
         const getAllUsers = async () => {
             await axios.get(process.env.REACT_APP_BACKEND_URL).then((list) => {
@@ -19,7 +20,7 @@ const UserContext = ({ children }) => {
     }, [users])
 
     return (
-        <userContext.Provider value={{ users }}>
+        <userContext.Provider value={{ users, activeUser, setActiveUser }}>
             {children}
         </userContext.Provider>
     )

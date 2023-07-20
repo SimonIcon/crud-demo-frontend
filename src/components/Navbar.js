@@ -13,8 +13,6 @@ const Navbar = () => {
                     <li className='px-5 capitalize font-semibold text-sm hover:text-pink-600 hover:underline'>
                         <Link to="/createUser">create user</Link>
                     </li>
-
-
                 </ul>
             </div>
 

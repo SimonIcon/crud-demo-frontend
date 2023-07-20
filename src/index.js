@@ -5,6 +5,7 @@ import App from './App';
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import HomePage from './pages/HomePage';
 import CreateUser from './pages/CreateUser';
+import UpdateUser from './components/UpdateUser';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         path: '/createUser',
         element: <CreateUser />
       },
+      {
+        path: "/updateUser",
+        element: <UpdateUser />
+      }
     ],
   },
 ]);

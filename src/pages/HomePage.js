@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { userContext } from '../context/UserContext'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const HomePage = () => {
-    const { users } = useContext(userContext)
+    const { users, setActiveUser } = useContext(userContext)
     const [activeId, setActiveId] = useState('')
     const [message, setMessage] = useState('')
 
@@ -18,6 +19,8 @@ const HomePage = () => {
         })
 
     }
+
+    const navigate = useNavigate()
     return (
         <div className='w-full flex justify-center mt-6'>
             <div className='w-full md:w-[70%] lg:w-60% xl:w-[50%]'>
@@ -39,7 +42,12 @@ const HomePage = () => {
                                 <td className='px-2'>{user.origin}</td>
                                 <td className='px-2'>{user.isAdmint === true ? "true" : "false"}</td>
                                 <td className='px-2 text-center capitalize text-green-500 text-xs font-semibold
-                                hover:text-green-800 hover:underline'>update</td>
+                                hover:text-green-800 hover:underline'
+                                    onClick={() => {
+                                        setActiveUser(user)
+                                        navigate('/updateUser')
+                                    }}
+                                >update</td>
                                 <td className='px-2 capitalize text-red-500 font-semibold hover:underline
                                 hover:text-red-800'
                                     onClick={() => {
@@ -50,10 +58,9 @@ const HomePage = () => {
                             </tr>
                         ))
                     }
+
                 </table>
-
             </div>
-
         </div>
     )
 }
